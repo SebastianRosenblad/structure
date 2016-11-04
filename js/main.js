@@ -1,0 +1,1 @@
+$("#scripts").append('<script type="text/javascript" src="modules/button_deploy/button_deploy.js"></script>');

@@ -1,5 +1,6 @@
-var button_exit = function() {
+var button_exit = function(p_unique_name) {
 	this.m_class_name = "button_exit";
+	this.m_unique_name = p_unique_name;
 	
 	this.m_template = [
 		'<div id="{{id_name}}">{{content}}</div>'

@@ -1,0 +1,8 @@
+#button_info {
+	width: 48px;
+	height: 48px;
+	cursor:pointer;
+	position:relative;
+	background-image: url("../../img/button_info.png");
+	float:left;
+}

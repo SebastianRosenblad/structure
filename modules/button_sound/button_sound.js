@@ -1,8 +1,7 @@
-var button_info = function(p_unique_name) {
-	this.m_class_name = "button_info";
+var button_sound = function(p_unique_name) {
+	this.m_class_name = "button_sound";
 	this.m_unique_name = p_unique_name;
 	this.m_handlebars = [];
-	this.m_popup_info;
 	
 	var handelbar_object = {"html":"", "expressions":"", "append":""};
 	handelbar_object.html = [
@@ -16,15 +15,16 @@ var button_info = function(p_unique_name) {
 	};
 	this.m_handlebars.push(handelbar_object);
 };
-button_info.prototype = Object.create(base_module.prototype);
+button_sound.prototype = Object.create(base_module.prototype);
 
-button_info.prototype._specific_initialize = function() {
-	this.m_popup_info = new window["popup_info"](this.m_unique_name + "_popup");
-	this.m_popup_info.initialize("#hider", this.m_class_name);
-	
+button_sound.prototype._specific_initialize = function() {
 	var self = this;
+	var sound = 1;
+	var html_class = [this.m_class_name + "_off " + this.m_unique_name + " ui_button no_select",
+					  this.m_class_name + " " + this.m_unique_name + " ui_button no_select"];
 	
 	$("#" + this.m_unique_name).click(function() {
-		$("#" + self.m_unique_name + "_popup").toggle();
+		sound = (sound + 1) % 2;
+		$("#" + self.m_unique_name).attr("class", html_class[sound]);
 	});
 };

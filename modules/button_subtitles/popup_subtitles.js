@@ -1,5 +1,5 @@
-var popup_info = function(p_unique_name) {
-	this.m_class_name = "popup_info";
+var popup_subtitles = function(p_unique_name) {
+	this.m_class_name = "popup_subtitles";
 	this.m_unique_name = p_unique_name;
 	this.m_handlebars = [];
 	
@@ -10,8 +10,8 @@ var popup_info = function(p_unique_name) {
 	handelbar_object.expressions = {
 		class_name: this.m_class_name,
 		unique_name: this.m_unique_name,
-		content: ""
+		content: "subtitles"
 	};
 	this.m_handlebars.push(handelbar_object);
 };
-popup_info.prototype = Object.create(base_module.prototype);
+popup_subtitles.prototype = Object.create(base_module.prototype);

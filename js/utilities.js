@@ -1,5 +1,6 @@
 // Basic needs
 var course_structure = [];
+var course_title = "";
 
 // Handlebars
 function template_to_html(data, template) {

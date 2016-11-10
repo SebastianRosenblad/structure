@@ -1,8 +1,8 @@
-var button_info = function(p_unique_name) {
-	this.m_class_name = "button_info";
+var button_subtitles = function(p_unique_name) {
+	this.m_class_name = "button_subtitles";
 	this.m_unique_name = p_unique_name;
 	this.m_handlebars = [];
-	this.m_popup_info;
+	this.m_popup_subtitles;
 	
 	var handelbar_object = {"html":"", "expressions":"", "append":""};
 	handelbar_object.html = [
@@ -16,11 +16,11 @@ var button_info = function(p_unique_name) {
 	};
 	this.m_handlebars.push(handelbar_object);
 };
-button_info.prototype = Object.create(base_module.prototype);
+button_subtitles.prototype = Object.create(base_module.prototype);
 
-button_info.prototype._specific_initialize = function() {
-	this.m_popup_info = new window["popup_info"](this.m_unique_name + "_popup");
-	this.m_popup_info.initialize("#hider", this.m_class_name);
+button_subtitles.prototype._specific_initialize = function() {
+	this.m_popup_subtitles = new window["popup_subtitles"](this.m_unique_name + "_popup");
+	this.m_popup_subtitles.initialize("#hider", this.m_class_name);
 	
 	var self = this;
 	

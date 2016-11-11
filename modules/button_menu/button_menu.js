@@ -1,11 +1,22 @@
-var button_menu = function(p_unique_name) {
+var button_menu = function(p_unique_name, p_parent_name, p_classes) {
 	this.m_class_name = "button_menu";
 	this.m_unique_name = p_unique_name;
-	this.m_handlebars = [];
 	
-	var handelbar_object = {"html":"", "expressions":"", "append":""};
+	p_classes = p_classes == undefined ? [] : p_classes;
+	
+	var template = [
+		'<div id="{{unique_name}}" class="{{class_name}} {{unique_name}} {{style_classes}}">{{content}}</div>'
+	].join('\n');
+	var expressions = {
+		unique_name: this.m_unique_name,
+		class_name: this.m_class_name,
+		style_classes: p_classes.join(" "),
+		content: ""
+	};
+	this._append_html(expressions, template, p_parent_name);
+	
 	/***** Johannes HTML: begin() *****/
-	handelbar_object.html = [
+	var template = [
 		'<div id="menu">',
 			'<div class="menuHeader" id="menuTitle"></div>',
 			'<div class="panel" id="mainmenu"></div>',
@@ -14,20 +25,7 @@ var button_menu = function(p_unique_name) {
 		'</div>'
 	].join('\n');
 	/***** Johannes HTML: end() *****/
-	handelbar_object.append = "#hider";
-	this.m_handlebars.push(handelbar_object);
-	
-	handelbar_object = {"html":"", "expressions":"", "append":""};
-	handelbar_object.html = [
-		'<div id="{{unique_name}}" class="{{class_name}} {{unique_name}} {{button_styles}}">{{content}}</div>'
-	].join('\n');
-	handelbar_object.expressions = {
-		class_name: this.m_class_name,
-		unique_name: this.m_unique_name,
-		button_styles: "ui_button no_select",
-		content: ""
-	};
-	this.m_handlebars.push(handelbar_object);
+	this._append_html("", template, "#hider");
 };
 button_menu.prototype = Object.create(base_module.prototype);
 
@@ -66,6 +64,7 @@ button_menu.prototype._specific_initialize = function() {
 					} else{
 						var iP=true;
 					}
+					console.log("I think it gets here");
 					courseList.push({
 						"chaptertitle":course_structure[i].title,
 						"id":course_structure[i].subMenu[ii].id,
@@ -87,6 +86,7 @@ button_menu.prototype._specific_initialize = function() {
 						"inProgress":iP,
 						"tile":$("#sm"+i+"_"+ii)
 					});
+					console.log("But not here");
 					pdcnt++;						
 				} else{
 					if(course_structure[i].subMenu[ii].title.length>50){

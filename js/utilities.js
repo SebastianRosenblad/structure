@@ -3,12 +3,11 @@ var course_structure = [];
 var course_title = "";
 
 // Handlebars
-function template_to_html(data, template) {
+function template_to_html(expressions, template) {
     var compile = Handlebars.compile(template);
-    return compile(data);
+    return compile(expressions);
 };
 
-// Opentip
 // Opentip Styles
 Opentip.styles.ui_help = {
 	target: true,

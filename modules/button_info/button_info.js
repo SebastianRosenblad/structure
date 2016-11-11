@@ -1,26 +1,25 @@
-var button_info = function(p_unique_name) {
+var button_info = function(p_unique_name, p_parent_name, p_classes) {
 	this.m_class_name = "button_info";
 	this.m_unique_name = p_unique_name;
-	this.m_handlebars = [];
-	this.m_popup_info;
 	
-	var handelbar_object = {"html":"", "expressions":"", "append":""};
-	handelbar_object.html = [
-		'<div id="{{unique_name}}" class="{{class_name}} {{unique_name}} {{button_styles}}">{{content}}</div>'
+	p_classes = p_classes == undefined ? [] : p_classes;
+	
+	var template = [
+		'<div id="{{unique_name}}" class="{{class_name}} {{unique_name}} {{style_classes}}">{{content}}</div>'
 	].join('\n');
-	handelbar_object.expressions = {
-		class_name: this.m_class_name,
+	var expressions = {
 		unique_name: this.m_unique_name,
-		button_styles: "ui_button no_select",
+		class_name: this.m_class_name,
+		style_classes: p_classes.join(" "),
 		content: ""
 	};
-	this.m_handlebars.push(handelbar_object);
+	this._append_html(expressions, template, p_parent_name);
 };
 button_info.prototype = Object.create(base_module.prototype);
 
 button_info.prototype._specific_initialize = function() {
-	this.m_popup_info = new window["popup_info"](this.m_unique_name + "_popup");
-	this.m_popup_info.initialize("#hider", this.m_class_name);
+	var m_popup_info = new window["popup_info"](this.m_unique_name + "_popup", "#hider");
+	m_popup_info.initialize(this.m_class_name);
 	
 	var self = this;
 	

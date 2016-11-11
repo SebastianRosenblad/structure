@@ -1,17 +1,15 @@
-var popup_info = function(p_unique_name) {
+var popup_info = function(p_unique_name, p_parent_name) {
 	this.m_class_name = "popup_info";
 	this.m_unique_name = p_unique_name;
-	this.m_handlebars = [];
 	
-	var handelbar_object = {"html":"", "expressions":"", "append":""};
-	handelbar_object.html = [
+	var template = [
 		'<div id="{{unique_name}}" class="{{class_name}} {{unique_name}}">{{content}}</div>'
 	].join('\n');
-	handelbar_object.expressions = {
+	var expressions = {
 		class_name: this.m_class_name,
 		unique_name: this.m_unique_name,
 		content: ""
 	};
-	this.m_handlebars.push(handelbar_object);
+	this._append_html(expressions, template, p_parent_name);
 };
 popup_info.prototype = Object.create(base_module.prototype);

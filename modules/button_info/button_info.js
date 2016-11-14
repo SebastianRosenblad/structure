@@ -14,6 +14,8 @@ var button_info = function(p_unique_name, p_parent_name, p_classes) {
 		content: ""
 	};
 	this._append_html(expressions, template, p_parent_name);
+	
+	unique_ui_elements.push("#" + this.m_unique_name + "_popup");
 };
 button_info.prototype = Object.create(base_module.prototype);
 
@@ -25,5 +27,6 @@ button_info.prototype._specific_initialize = function() {
 	
 	$("#" + this.m_unique_name).click(function() {
 		$("#" + self.m_unique_name + "_popup").toggle();
+		hide_unique_ui_elements("#" + self.m_unique_name + "_popup");
 	});
 };

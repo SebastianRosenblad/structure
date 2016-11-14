@@ -26,6 +26,8 @@ var button_menu = function(p_unique_name, p_parent_name, p_classes) {
 	].join('\n');
 	/***** Johannes HTML: end() *****/
 	this._append_html("", template, "#hider");
+	
+	unique_ui_elements.push("#menu");
 };
 button_menu.prototype = Object.create(base_module.prototype);
 
@@ -65,7 +67,7 @@ button_menu.prototype._specific_initialize = function() {
 						var iP=true;
 					}
 					console.log("I think it gets here");
-					courseList.push({
+					/*courseList.push({
 						"chaptertitle":course_structure[i].title,
 						"id":course_structure[i].subMenu[ii].id,
 						"title":course_structure[i].subMenu[ii].title,
@@ -85,7 +87,7 @@ button_menu.prototype._specific_initialize = function() {
 						"showWarning":course_structure[i].subMenu[ii].showWarning,
 						"inProgress":iP,
 						"tile":$("#sm"+i+"_"+ii)
-					});
+					});*/
 					console.log("But not here");
 					pdcnt++;						
 				} else{
@@ -204,5 +206,6 @@ button_menu.prototype._specific_initialize = function() {
 	
 	$("#" + this.m_unique_name).click(function() {
 		$("#menu").toggle();
+		hide_unique_ui_elements("#menu");
 	});
 }

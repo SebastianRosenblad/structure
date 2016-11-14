@@ -23,3 +23,12 @@ base_module.prototype._get_css = function(p_module_name) {
         css_link.setAttribute("href", "modules/" + p_module_name + "/" + this.m_class_name + ".css");
 	return css_link;
 };
+
+var unique_ui_elements = [];
+hide_unique_ui_elements = function(p_ele) {
+	unique_ui_elements.forEach(function(ui_ele) {
+		if (ui_ele != p_ele) {
+			$(ui_ele).hide();
+		}
+	});
+};
